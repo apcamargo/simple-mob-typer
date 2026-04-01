@@ -1,0 +1,39 @@
+[project]
+name = "simple-mob-typer"
+version = "0.1.0"
+description = "Simple MOB-typer-compatible plasmid classifier"
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+authors = [
+  { name = "Antonio Camargo", email = "antoniop.camargo@gmail.com" },
+]
+dependencies = [
+  "click>=8.3.1,<9",
+  "polars>=1.39.3,<2",
+]
+
+[project.scripts]
+simple-mob-typer = "simple_mob_typer.cli:main"
+
+[build-system]
+requires = [
+  "uv_build>=0.11.2,<0.12.0",
+]
+build-backend = "uv_build"
+
+[tool.pixi.workspace]
+channels = [
+  "conda-forge",
+  "bioconda",
+]
+platforms = [
+  "linux-64",
+  "osx-arm64",
+]
+
+[tool.pixi.dependencies]
+blast = ">=2.16.0,<3"
+
+[tool.pixi.pypi-dependencies.simple-mob-typer]
+path = "."
+editable = true
